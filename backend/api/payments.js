@@ -81,7 +81,7 @@ router.post('/initiate', async (req, res) => {
       created_at: new Date().toISOString()
     };
 
-    await insert('payment_intents', paymentIntent).catch(() => {});
+    await insert('nanoleads_payment_intents', paymentIntent).catch(() => {});
 
     // TODO: Appeler l'API FineoPay pour créer la session de paiement
     // const fineopaySession = await createFineopaySession(paymentIntent);
@@ -133,7 +133,7 @@ router.post('/webhook', express.raw({ type: 'application/json' }), async (req, r
       });
 
       // Enregistrer le paiement
-      await insert('payments', {
+      await insert('nanoleads_payments', {
         payment_id,
         email,
         fingerprint,
