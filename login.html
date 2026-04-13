@@ -30,6 +30,10 @@
           <label for="login-email">Email *</label>
           <input type="email" id="login-email" class="form-control" placeholder="jean@entreprise.com" required autofocus>
         </div>
+        <div class="form-group">
+          <label for="login-password">Mot de passe *</label>
+          <input type="password" id="login-password" class="form-control" placeholder="Votre mot de passe" required>
+        </div>
 
         <div id="login-error" class="alert alert-error" style="display:none"></div>
         <div id="login-success" class="alert alert-success" style="display:none"></div>
@@ -66,6 +70,7 @@ document.getElementById('login-form').addEventListener('submit', async function(
   const errDiv = document.getElementById('login-error');
   const okDiv = document.getElementById('login-success');
   const email = document.getElementById('login-email').value.trim().toLowerCase();
+  const password = document.getElementById('login-password').value;
 
   errDiv.style.display = 'none';
   okDiv.style.display = 'none';
@@ -88,6 +93,11 @@ document.getElementById('login-form').addEventListener('submit', async function(
     }
 
     const client = data[0];
+
+    // Vérifier le mot de passe
+    if (client.mot_de_passe !== password) {
+      throw new Error('Mot de passe incorrect.');
+    }
 
     // Sauvegarder la session en local
     localStorage.setItem('w2k_session', JSON.stringify(client));
