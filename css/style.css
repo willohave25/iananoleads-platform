@@ -279,6 +279,8 @@ nav {
 }
 
 /* --- Mobile Nav --- */
+.nav-mobile { display: none; }
+
 @media (max-width: 768px) {
   .nav-hamburger { display: flex; }
   .nav-desktop { display: none; }
@@ -291,7 +293,6 @@ nav {
     background: var(--dark-bg-alt);
     border-bottom: 1px solid rgba(212,175,55,0.2);
     padding: 24px;
-    display: none;
     flex-direction: column;
     gap: 20px;
     z-index: 999;
