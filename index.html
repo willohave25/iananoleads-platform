@@ -3,181 +3,409 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>iaNanoLeads - Lancement Imminent</title>
-  <meta name="description" content="Plateforme SaaS de génération de leads B2B. Lancement imminent. Inscrivez-vous à la liste d'attente.">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-      color: #FFFFFF;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    
-    .container {
-      text-align: center;
-      max-width: 600px;
-    }
-    
-    .logo {
-      font-size: clamp(32px, 8vw, 56px);
-      font-weight: 800;
-      background: linear-gradient(135deg, #D4AF37, #FFD700);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 24px;
-      animation: pulse 2s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.8; }
-    }
-    
-    .badge {
-      display: inline-block;
-      background: rgba(212, 175, 55, 0.2);
-      border: 1px solid #D4AF37;
-      color: #FFD700;
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 32px;
-      animation: glow 2s ease-in-out infinite;
-    }
-    
-    @keyframes glow {
-      0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
-      50% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
-    }
-    
-    h1 {
-      font-size: clamp(24px, 5vw, 42px);
-      font-weight: 700;
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-    
-    p {
-      font-size: clamp(16px, 3vw, 20px);
-      color: #CCCCCC;
-      line-height: 1.6;
-      margin-bottom: 32px;
-    }
-    
-    .cta-button {
-      display: inline-block;
-      background: linear-gradient(135deg, #D4AF37, #FFD700);
-      color: #000000;
-      padding: 16px 40px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 18px;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
-    }
-    
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(212, 175, 55, 0.5);
-    }
-    
-    .countdown {
-      margin-top: 48px;
-      padding-top: 32px;
-      border-top: 1px solid #333;
-    }
-    
-    .countdown-label {
-      font-size: 14px;
-      color: #888;
-      margin-bottom: 12px;
-    }
-    
-    .countdown-timer {
-      font-size: clamp(18px, 4vw, 28px);
-      font-weight: 700;
-      color: #D4AF37;
-    }
-    
-    .social-proof {
-      margin-top: 32px;
-      font-size: 14px;
-      color: #999;
-    }
-    
-    .social-proof strong {
-      color: #D4AF37;
-    }
-    
-    @media (max-width: 480px) {
-      .cta-button {
-        width: 100%;
-        padding: 14px 32px;
-      }
-    }
-  </style>
+  <title>iaNanoLeads — Génération Leads B2B Automatisée | €49/mois</title>
+  <meta name="description" content="Découvrez iaNanoLeads : leads qualifiés illimités B2B en Europe et Afrique francophone, emails personnalisés automatiques. €49/mois tout inclus. Prospection ROI maximale.">
+  <meta property="og:title" content="iaNanoLeads — Génération Leads B2B Automatisée">
+  <meta property="og:description" content="Leads qualifiés illimités B2B. Emails personnalisés automatiques. €49/mois tout inclus.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#D4AF37">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/geolocation.js" defer></script>
+  <script src="js/currency-converter.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <div class="logo">iaNanoLeads</div>
-    
-    <div class="badge">🚀 Lancement Imminent</div>
-    
-    <h1>La Révolution B2B Arrive Bientôt</h1>
-    
-    <p>
-      Génération de leads B2B qualifiés illimités. Emails personnalisés automatiquement. 
-      Technologie propriétaire W2K-Digital. Tout à €49/mois.
-    </p>
-    
-    <a href="https://inscription.iananoleads.com" class="cta-button">
-      Rejoindre la Liste d'Attente
+
+<!-- ===== NAVIGATION ===== -->
+<header>
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <picture>
+        <source srcset="images/logos/logo-iananoleads-horizontal.webp" type="image/webp">
+        <img src="images/logos/logo-iananoleads-horizontal.png" alt="iaNanoLeads" width="180" height="44">
+      </picture>
     </a>
-    
-    <div class="countdown">
-      <div class="countdown-label">Lancement prévu dans</div>
-      <div class="countdown-timer" id="countdown">Chargement...</div>
+
+    <div class="nav-links nav-desktop" id="nav-links">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="fonctionnalites.html">Fonctionnalités</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="temoignages.html">Témoignages</a>
+      <a href="a-propos.html">À Propos</a>
+      <a href="contact.html">Contact</a>
     </div>
-    
-    <div class="social-proof">
-      ✨ <strong>200+</strong> entreprises déjà inscrites
+
+    <div class="nav-cta nav-desktop">
+      <a href="tarifs.html" class="btn btn-primary">Démarrer — <span data-price>€49</span>/mois</a>
+    </div>
+
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <nav class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Accueil</a>
+    <a href="fonctionnalites.html">Fonctionnalités</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="temoignages.html">Témoignages</a>
+    <a href="a-propos.html">À Propos</a>
+    <a href="contact.html">Contact</a>
+    <a href="tarifs.html" class="btn btn-primary">Démarrer — <span data-price>€49</span>/mois</a>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg" style="background-image:url('images/heroes/hero-homepage.webp')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <div class="hero-badge">✦ Technologie propriétaire W2K-Digital</div>
+      <h1 class="hero-title animate-fade-up">
+        Génération Leads B2B<br><span class="gold">Illimités et Automatisés</span>
+      </h1>
+      <p class="hero-subtitle animate-fade-up animate-delay-1">
+        Boostez votre prospection commerciale avec des leads qualifiés générés automatiquement par notre technologie propriétaire W2K-Digital. À seulement <strong style="color:var(--primary-gold)" data-price-full>€49/mois</strong>, accédez illimitement à des contacts ciblés et des emails personnalisés prêts à l'envoi.
+      </p>
+      <div class="hero-actions animate-fade-up animate-delay-2">
+        <a href="tarifs.html" class="btn btn-primary btn-lg">Démarrer maintenant — <span data-price>€49</span>/mois</a>
+        <a href="fonctionnalites.html" class="btn btn-secondary btn-lg">Voir les fonctionnalités</a>
+      </div>
+      <div class="hero-stats animate-fade-up animate-delay-3">
+        <div class="hero-stat">
+          <span class="hero-stat-value">200+</span>
+          <span class="hero-stat-label">Entreprises actives</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">96%</span>
+          <span class="hero-stat-label">Satisfaction clients</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">340%</span>
+          <span class="hero-stat-label">ROI moyen</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">24/7</span>
+          <span class="hero-stat-label">Support automatisé</span>
+        </div>
+      </div>
     </div>
   </div>
-  
-  <script>
-    // Compte à rebours vers Mai 2025
-    const launchDate = new Date('2025-05-01T00:00:00').getTime();
-    
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = launchDate - now;
-      
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      
-      document.getElementById('countdown').textContent = 
-        `${days} jours ${hours} heures`;
-      
-      if (distance < 0) {
-        document.getElementById('countdown').textContent = 'C\'est maintenant !';
-      }
-    }
-    
-    updateCountdown();
-    setInterval(updateCountdown, 3600000); // Update every hour
-  </script>
+</section>
+
+<!-- ===== POURQUOI iaNanoLeads ===== -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Pourquoi choisir <span>iaNanoLeads</span> ?</h2>
+      <p>Notre solution SaaS révolutionne la prospection commerciale automatisée en Europe et Afrique francophone. Avec un tarif unique de <span data-price>€49</span>/mois, profitez de fonctionnalités puissantes orientées ROI.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card">
+        <picture>
+          <source srcset="images/icons/features/icon-search-leads.webp" type="image/webp">
+          <img src="images/icons/features/icon-search-leads.png" alt="Leads illimités" class="card-icon" loading="lazy" width="56" height="56">
+        </picture>
+        <h3>Leads illimités à <span data-price>€49</span>/mois</h3>
+        <p>Générez autant de leads qualifiés que nécessaire sans limite de volume ni frais supplémentaires.</p>
+      </div>
+      <div class="card">
+        <picture>
+          <source srcset="images/icons/features/icon-auto-email.webp" type="image/webp">
+          <img src="images/icons/features/icon-auto-email.png" alt="Emails personnalisés" class="card-icon" loading="lazy" width="56" height="56">
+        </picture>
+        <h3>Emails personnalisés automatiquement</h3>
+        <p>Notre moteur de personnalisation crée des messages contextuels adaptés à chaque prospect et au secteur ciblé.</p>
+      </div>
+      <div class="card">
+        <picture>
+          <source srcset="images/icons/features/icon-download-leads.webp" type="image/webp">
+          <img src="images/icons/features/icon-download-leads.png" alt="Multi-pays" class="card-icon" loading="lazy" width="56" height="56">
+        </picture>
+        <h3>Multi-pays + Multi-secteurs</h3>
+        <p>Ciblez précisément la France, Belgique, Côte d'Ivoire, Sénégal et bien plus, tous secteurs confondus.</p>
+      </div>
+      <div class="card">
+        <picture>
+          <source srcset="images/icons/features/icon-chatbot-support.webp" type="image/webp">
+          <img src="images/icons/features/icon-chatbot-support.png" alt="Support 24/7" class="card-icon" loading="lazy" width="56" height="56">
+        </picture>
+        <h3>Support automatisé 24/7</h3>
+        <p>Assistant virtuel W2K pour réponses instantanées à toutes vos questions de prospection.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMMENT ÇA MARCHE ===== -->
+<section class="steps-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Comment <span>ça marche</span> ?</h2>
+      <p>La prospection commerciale automatisée n'a jamais été aussi simple. Notre processus en 3 étapes vous permet de passer de la sélection à l'action en quelques minutes.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Sélectionnez pays + secteur</h3>
+        <p>Choisissez parmi des dizaines de pays en Europe et Afrique francophone, et des secteurs variés comme Tech, Finance, Immobilier et plus.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Génération automatique</h3>
+        <p>La technologie propriétaire W2K-Digital et nos algorithmes avancés analysent et extraient des contacts précis, qualifiés et à jour.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Téléchargez et prospectez</h3>
+        <p>Fichiers CSV/JSON prêts à l'import avec emails personnalisés intégrant les actualités récentes du secteur pour un démarrage express.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTEURS ===== -->
+<section class="sectors-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Secteurs <span>couverts</span></h2>
+      <p>iaNanoLeads couvre les principaux secteurs pour une génération de leads B2B ultra-ciblée. Que vous visiez la tech en France ou l'immobilier au Sénégal, notre moteur adapte les résultats.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="sector-card">
+        <picture>
+          <source srcset="images/icons/sectors/sector-tech.webp" type="image/webp">
+          <img src="images/icons/sectors/sector-tech.png" alt="Tech" loading="lazy" width="48" height="48">
+        </picture>
+        <h3>Tech</h3>
+        <p>Startups et entreprises innovantes</p>
+      </div>
+      <div class="sector-card">
+        <picture>
+          <source srcset="images/icons/sectors/sector-finance.webp" type="image/webp">
+          <img src="images/icons/sectors/sector-finance.png" alt="Finance" loading="lazy" width="48" height="48">
+        </picture>
+        <h3>Finance</h3>
+        <p>Banques, assurances, fintech</p>
+      </div>
+      <div class="sector-card">
+        <picture>
+          <source srcset="images/icons/sectors/sector-retail.webp" type="image/webp">
+          <img src="images/icons/sectors/sector-retail.png" alt="Retail" loading="lazy" width="48" height="48">
+        </picture>
+        <h3>Retail</h3>
+        <p>Commerce de détail et e-commerce</p>
+      </div>
+      <div class="sector-card">
+        <picture>
+          <source srcset="images/icons/sectors/sector-healthcare.webp" type="image/webp">
+          <img src="images/icons/sectors/sector-healthcare.png" alt="Healthcare" loading="lazy" width="48" height="48">
+        </picture>
+        <h3>Healthcare</h3>
+        <p>Cliniques, pharma, services médicaux</p>
+      </div>
+      <div class="sector-card">
+        <picture>
+          <source srcset="images/icons/sectors/sector-real-estate.webp" type="image/webp">
+          <img src="images/icons/sectors/sector-real-estate.png" alt="Immobilier" loading="lazy" width="48" height="48">
+        </picture>
+        <h3>Immobilier</h3>
+        <p>Agences, promoteurs, gestionnaires</p>
+      </div>
+      <div class="sector-card">
+        <picture>
+          <source srcset="images/icons/sectors/sector-hospitality.webp" type="image/webp">
+          <img src="images/icons/sectors/sector-hospitality.png" alt="Hospitality" loading="lazy" width="48" height="48">
+        </picture>
+        <h3>Hospitality</h3>
+        <p>Hôtels, restauration, tourisme</p>
+      </div>
+      <div class="sector-card">
+        <picture>
+          <source srcset="images/icons/sectors/sector-education.webp" type="image/webp">
+          <img src="images/icons/sectors/sector-education.png" alt="Education" loading="lazy" width="48" height="48">
+        </picture>
+        <h3>Education</h3>
+        <p>Écoles, formations, edtech</p>
+      </div>
+      <div class="sector-card">
+        <picture>
+          <source srcset="images/icons/sectors/sector-manufacturing.webp" type="image/webp">
+          <img src="images/icons/sectors/sector-manufacturing.png" alt="Manufacturing" loading="lazy" width="48" height="48">
+        </picture>
+        <h3>Manufacturing</h3>
+        <p>Industrie, production, supply chain</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TÉMOIGNAGES ===== -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Nos <span>clients témoignent</span></h2>
+      <p>Des clients en Europe et Afrique francophone confirment le ROI exceptionnel d'iaNanoLeads.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"iaNanoLeads a transformé ma prospection. En un mois, 150 leads qualifiés et emails prêts ! <span data-price>€49</span>/mois pour ce ROI, imbattable."</p>
+        <div class="testimonial-author">
+          <picture>
+            <source srcset="images/testimonials/testimonial-avatar-01.webp" type="image/webp">
+            <img src="images/testimonials/testimonial-avatar-01.jpg" alt="Jean Dupont" class="testimonial-avatar" loading="lazy" width="48" height="48">
+          </picture>
+          <div class="testimonial-info">
+            <strong>Jean Dupont</strong>
+            <span>CEO TechNova · France</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Parfait pour le marché ivoirien. Leads locaux précis, personnalisation automatique top. La technologie W2K-Digital m'impressionne."</p>
+        <div class="testimonial-author">
+          <picture>
+            <source srcset="images/testimonials/testimonial-avatar-02.webp" type="image/webp">
+            <img src="images/testimonials/testimonial-avatar-02.jpg" alt="Awa Ndiaye" class="testimonial-avatar" loading="lazy" width="48" height="48">
+          </picture>
+          <div class="testimonial-info">
+            <strong>Awa Ndiaye</strong>
+            <span>Dirigeante FinanceAfrika · Côte d'Ivoire</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Gain de temps énorme avec le dashboard. Prospection automatisée qui cartonne en Belgique. Le moteur W2K-Digital est redoutable."</p>
+        <div class="testimonial-author">
+          <picture>
+            <source srcset="images/testimonials/testimonial-avatar-03.webp" type="image/webp">
+            <img src="images/testimonials/testimonial-avatar-03.jpg" alt="Marc Leclerc" class="testimonial-avatar" loading="lazy" width="48" height="48">
+          </picture>
+          <div class="testimonial-info">
+            <strong>Marc Leclerc</strong>
+            <span>Sales Manager RetailPro · Belgique</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="temoignages.html" class="btn btn-secondary">Voir tous les témoignages →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TARIF SIMPLE ===== -->
+<section class="pricing-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Tarif <span>Simple</span></h2>
+      <p>Un seul plan PROFESSIONAL : tout illimité, sans surprise. Activez immédiatement et mesurez votre ROI dès la première semaine.</p>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-badge">PROFESSIONAL</div>
+      <div class="pricing-price">
+        <span class="currency" data-currency-symbol>€</span><span class="amount" data-price-amount>49</span>
+        <span class="period">/mois</span>
+      </div>
+      <p style="color:var(--gray-medium);font-size:14px;margin:8px 0 0">Tout inclus · Activation immédiate</p>
+      <ul class="pricing-features">
+        <li><span class="check">✓</span> Leads illimités générés</li>
+        <li><span class="check">✓</span> Emails personnalisés illimités</li>
+        <li><span class="check">✓</span> Téléchargements CSV/JSON illimités</li>
+        <li><span class="check">✓</span> Dashboard analytics complet</li>
+        <li><span class="check">✓</span> Support automatisé 24/7</li>
+        <li><span class="check">✓</span> Actualités secteur temps réel</li>
+        <li><span class="check">✓</span> 1 licence ordinateur</li>
+        <li><span class="check">✓</span> Mises à jour incluses</li>
+        <li><span class="check">✓</span> Données sécurisées RGPD</li>
+      </ul>
+      <a href="tarifs.html" class="btn btn-primary btn-lg pricing-cta">Démarrer maintenant — <span data-price>€49</span>/mois</a>
+      <p style="font-size:13px;color:var(--gray-medium);margin-top:16px;margin-bottom:0">🛡️ Garantie satisfait ou remboursé 30 jours</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="cta-section">
+  <div class="container" style="max-width:680px">
+    <h2>Démarrez votre prospection <span>aujourd'hui</span></h2>
+    <p>Générez vos premiers leads B2B qualifiés en Europe et Afrique francophone dès aujourd'hui avec iaNanoLeads. Activation immédiate.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px">
+      <a href="tarifs.html" class="btn btn-primary btn-lg">Démarrer — <span data-price>€49</span>/mois</a>
+      <a href="contact.html" class="btn btn-secondary btn-lg">Poser une question</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <picture>
+        <source srcset="images/logos/logo-iananoleads-horizontal.webp" type="image/webp">
+        <img src="images/logos/logo-iananoleads-horizontal.png" alt="iaNanoLeads" width="160" height="40" loading="lazy">
+      </picture>
+      <p>Solution SaaS de génération de leads B2B automatisée par technologie propriétaire W2K-Digital. Europe & Afrique francophone.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="LinkedIn">
+          <picture>
+            <source srcset="images/icons/social/social-linkedin.webp" type="image/webp">
+            <img src="images/icons/social/social-linkedin.png" alt="LinkedIn" width="18" height="18" loading="lazy">
+          </picture>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <picture>
+            <source srcset="images/icons/social/social-twitter.webp" type="image/webp">
+            <img src="images/icons/social/social-twitter.png" alt="Twitter" width="18" height="18" loading="lazy">
+          </picture>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <picture>
+            <source srcset="images/icons/social/social-facebook.webp" type="image/webp">
+            <img src="images/icons/social/social-facebook.png" alt="Facebook" width="18" height="18" loading="lazy">
+          </picture>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Produit</h4>
+      <ul>
+        <li><a href="fonctionnalites.html">Fonctionnalités</a></li>
+        <li><a href="tarifs.html">Tarifs</a></li>
+        <li><a href="temoignages.html">Témoignages</a></li>
+        <li><a href="a-propos.html">À Propos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="mailto:support@iananoleads.com">support@iananoleads.com</a></li>
+        <li><a href="https://wa.me/33642535759" target="_blank" rel="noopener">WhatsApp</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Légal</h4>
+      <ul>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="confidentialite.html">Confidentialité</a></li>
+        <li><a href="cgv.html">CGV</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 W2K-Digital. Tous droits réservés. iaNanoLeads est une marque de W2K-Digital.</p>
+    <p>SIRET : 51456299000010</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/chatbot.js" defer></script>
 </body>
 </html>
