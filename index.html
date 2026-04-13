@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iaNanoLeads - Lancement Imminent</title>
+  <meta name="description" content="Plateforme SaaS de génération de leads B2B. Lancement imminent. Inscrivez-vous à la liste d'attente.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+      color: #FFFFFF;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .container {
+      text-align: center;
+      max-width: 600px;
+    }
+    
+    .logo {
+      font-size: clamp(32px, 8vw, 56px);
+      font-weight: 800;
+      background: linear-gradient(135deg, #D4AF37, #FFD700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 24px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    
+    .badge {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.2);
+      border: 1px solid #D4AF37;
+      color: #FFD700;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+      50% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
+    }
+    
+    h1 {
+      font-size: clamp(24px, 5vw, 42px);
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    
+    p {
+      font-size: clamp(16px, 3vw, 20px);
+      color: #CCCCCC;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #D4AF37, #FFD700);
+      color: #000000;
+      padding: 16px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(212, 175, 55, 0.5);
+    }
+    
+    .countdown {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid #333;
+    }
+    
+    .countdown-label {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    
+    .countdown-timer {
+      font-size: clamp(18px, 4vw, 28px);
+      font-weight: 700;
+      color: #D4AF37;
+    }
+    
+    .social-proof {
+      margin-top: 32px;
+      font-size: 14px;
+      color: #999;
+    }
+    
+    .social-proof strong {
+      color: #D4AF37;
+    }
+    
+    @media (max-width: 480px) {
+      .cta-button {
+        width: 100%;
+        padding: 14px 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">iaNanoLeads</div>
+    
+    <div class="badge">🚀 Lancement Imminent</div>
+    
+    <h1>La Révolution B2B Arrive Bientôt</h1>
+    
+    <p>
+      Génération de leads B2B qualifiés illimités. Emails personnalisés automatiquement. 
+      Technologie propriétaire W2K-Digital. Tout à €49/mois.
+    </p>
+    
+    <a href="https://inscription.iananoleads.com" class="cta-button">
+      Rejoindre la Liste d'Attente
+    </a>
+    
+    <div class="countdown">
+      <div class="countdown-label">Lancement prévu dans</div>
+      <div class="countdown-timer" id="countdown">Chargement...</div>
+    </div>
+    
+    <div class="social-proof">
+      ✨ <strong>200+</strong> entreprises déjà inscrites
+    </div>
+  </div>
+  
+  <script>
+    // Compte à rebours vers Mai 2025
+    const launchDate = new Date('2025-05-01T00:00:00').getTime();
+    
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      
+      document.getElementById('countdown').textContent = 
+        `${days} jours ${hours} heures`;
+      
+      if (distance < 0) {
+        document.getElementById('countdown').textContent = 'C\'est maintenant !';
+      }
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 3600000); // Update every hour
+  </script>
+</body>
+</html>
