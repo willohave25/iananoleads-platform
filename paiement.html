@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement iaNanoLeads — €49/mois</title>
+  <meta name="description" content="Activez votre abonnement iaNanoLeads PROFESSIONAL à €49/mois.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/geolocation.js" defer></script>
+  <script src="js/currency-converter.js" defer></script>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <picture>
+        <source srcset="images/logos/logo-iananoleads-horizontal.webp" type="image/webp">
+        <img src="images/logos/logo-iananoleads-horizontal.png" alt="iaNanoLeads" width="180" height="44">
+      </picture>
+    </a>
+    <div class="nav-links nav-desktop">
+      <a href="index.html">Accueil</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section style="background:var(--dark-bg);min-height:100vh;padding:60px 0">
+  <div class="container" style="max-width:600px">
+
+    <!-- Étapes -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:48px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--gray-dark);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--gray-medium);font-size:14px">✓</div>
+        <span style="font-size:12px;color:var(--gray-medium)">Mes infos</span>
+      </div>
+      <div style="flex:1;height:2px;background:var(--primary-gold);margin:0 8px;margin-bottom:24px"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary-gold),var(--secondary-gold));display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;font-size:14px">2</div>
+        <span style="font-size:12px;color:var(--primary-gold);font-weight:600">Paiement</span>
+      </div>
+      <div style="flex:1;height:2px;background:var(--gray-dark);margin:0 8px;margin-bottom:24px"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--gray-dark);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--gray-medium);font-size:14px">3</div>
+        <span style="font-size:12px;color:var(--gray-medium)">Mon compte</span>
+      </div>
+    </div>
+
+    <!-- Récapitulatif commande -->
+    <div style="background:var(--dark-bg-card);border:1px solid rgba(212,175,55,0.3);border-radius:16px;padding:28px;margin-bottom:24px">
+      <h3 style="font-size:16px;color:var(--white);margin-bottom:16px">Récapitulatif</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--gray-dark)">
+        <span style="color:var(--gray-medium);font-size:14px">Formule PROFESSIONAL</span>
+        <span style="color:var(--white);font-weight:600" data-price>€49</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--gray-dark)">
+        <span style="color:var(--gray-medium);font-size:14px">Période</span>
+        <span style="color:var(--white);font-size:14px">Mensuel · Résiliable anytime</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0">
+        <span style="color:var(--white);font-weight:700">Total</span>
+        <span style="color:var(--primary-gold);font-weight:800;font-size:20px" data-price>€49</span>
+      </div>
+      <p style="font-size:12px;color:var(--gray-dark);margin:0;margin-top:4px">🛡️ Garantie satisfait ou remboursé 30 jours</p>
+    </div>
+
+    <!-- Infos client -->
+    <div id="client-recap" style="background:var(--dark-bg-card);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:20px;margin-bottom:24px;display:none">
+      <p style="font-size:13px;color:var(--gray-medium);margin:0" id="client-info"></p>
+    </div>
+
+    <!-- Méthodes de paiement -->
+    <div style="background:var(--dark-bg-card);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:32px">
+      <h2 style="font-size:20px;margin-bottom:24px">Choisissez votre <span class="text-gold">mode de paiement</span></h2>
+
+      <div style="display:grid;gap:12px;margin-bottom:28px">
+        <label style="display:flex;align-items:center;gap:14px;padding:16px;border:2px solid rgba(212,175,55,0.4);border-radius:10px;cursor:pointer;transition:all 0.3s" id="label-card">
+          <input type="radio" name="payment_method" value="card" checked style="accent-color:var(--primary-gold)">
+          <div>
+            <strong style="color:var(--white);font-size:14px">💳 Carte bancaire</strong>
+            <p style="font-size:12px;color:var(--gray-medium);margin:2px 0 0">Visa · Mastercard · Sécurisé SSL</p>
+          </div>
+        </label>
+        <label style="display:flex;align-items:center;gap:14px;padding:16px;border:1px solid var(--gray-dark);border-radius:10px;cursor:pointer;transition:all 0.3s" id="label-mobile">
+          <input type="radio" name="payment_method" value="mobile_money" style="accent-color:var(--primary-gold)">
+          <div>
+            <strong style="color:var(--white);font-size:14px">📱 Mobile Money</strong>
+            <p style="font-size:12px;color:var(--gray-medium);margin:2px 0 0">Orange Money · Wave · MTN</p>
+          </div>
+        </label>
+      </div>
+
+      <div id="payment-message" style="display:none" class="alert alert-success"></div>
+
+      <button id="pay-btn" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">
+        Payer <span data-price>€49</span> et activer mon compte
+      </button>
+
+      <p style="text-align:center;font-size:12px;color:var(--gray-dark);margin-top:16px;margin-bottom:0">
+        🔒 Paiement chiffré · Sans engagement · Résiliable anytime
+      </p>
+    </div>
+
+    <!-- Contact si problème -->
+    <div style="text-align:center;margin-top:24px;padding:20px;background:var(--dark-bg-card);border-radius:12px;border:1px solid rgba(255,255,255,0.04)">
+      <p style="font-size:13px;color:var(--gray-medium);margin:0">
+        Besoin d'aide ?
+        <a href="mailto:support@iananoleads.com" style="color:var(--primary-gold)">support@iananoleads.com</a> ·
+        <a href="https://wa.me/33642535759" target="_blank" rel="noopener" style="color:var(--primary-gold)">WhatsApp</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<script src="js/main.js"></script>
+<script>
+const API_URL = 'https://iananoleads-backend.onrender.com';
+
+// Récupérer les infos client depuis sessionStorage
+const client = JSON.parse(sessionStorage.getItem('w2k_client') || 'null');
+
+if (client) {
+  const recap = document.getElementById('client-recap');
+  const info = document.getElementById('client-info');
+  recap.style.display = 'block';
+  info.innerHTML = `👤 <strong style="color:var(--white)">${client.prenom} ${client.nom}</strong>${client.raison_sociale ? ' · ' + client.raison_sociale : ''} · ${client.email}`;
+} else {
+  // Pas de session → rediriger vers inscription
+  window.location.href = 'inscription.html';
+}
+
+// Highlight méthode sélectionnée
+document.querySelectorAll('input[name="payment_method"]').forEach(function(radio) {
+  radio.addEventListener('change', function() {
+    document.getElementById('label-card').style.borderColor = 'var(--gray-dark)';
+    document.getElementById('label-mobile').style.borderColor = 'var(--gray-dark)';
+    document.getElementById('label-card').style.borderWidth = '1px';
+    document.getElementById('label-mobile').style.borderWidth = '1px';
+    const lbl = document.getElementById('label-' + (this.value === 'card' ? 'card' : 'mobile'));
+    lbl.style.borderColor = 'rgba(212,175,55,0.4)';
+    lbl.style.borderWidth = '2px';
+  });
+});
+
+// Paiement
+document.getElementById('pay-btn').addEventListener('click', async function() {
+  const btn = this;
+  const method = document.querySelector('input[name="payment_method"]:checked').value;
+  const msgDiv = document.getElementById('payment-message');
+
+  btn.innerHTML = '<span class="spinner"></span> Traitement...';
+  btn.disabled = true;
+  msgDiv.style.display = 'none';
+
+  try {
+    const resp = await fetch(API_URL + '/api/payments/initiate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: client.email,
+        fingerprint: client.fingerprint || '',
+        currency: window.W2K_CURRENCY?.code || 'EUR',
+        payment_method: method
+      })
+    });
+
+    const data = await resp.json();
+
+    if (data.payment_url) {
+      // Redirection vers page de paiement FineoPay
+      window.location.href = data.payment_url;
+    } else {
+      // FineoPay pas encore configuré — afficher message contact
+      msgDiv.className = 'alert alert-success';
+      msgDiv.innerHTML = '✅ Votre demande a été enregistrée ! Notre équipe vous contacte sous 24h pour finaliser l\'activation.<br><br><strong>Email :</strong> support@iananoleads.com · <strong>WhatsApp :</strong> <a href="https://wa.me/33642535759" style="color:var(--primary-gold)">+33 6 42 53 57 59</a>';
+      msgDiv.style.display = 'block';
+      btn.innerHTML = 'Demande envoyée ✓';
+    }
+  } catch(err) {
+    msgDiv.className = 'alert alert-error';
+    msgDiv.innerHTML = 'Erreur de connexion. Contactez-nous : support@iananoleads.com';
+    msgDiv.style.display = 'block';
+    btn.innerHTML = 'Payer <span data-price>€49</span> et activer mon compte';
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
