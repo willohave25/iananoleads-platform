@@ -29,6 +29,7 @@
       <a href="tarifs.html">Tarifs</a>
       <a href="temoignages.html">Témoignages</a>
       <a href="contact.html">Contact</a>
+      <a href="login.html">Mon compte</a>
     </div>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -40,6 +41,7 @@
     <a href="tarifs.html">Tarifs</a>
     <a href="temoignages.html">Témoignages</a>
     <a href="contact.html">Contact</a>
+    <a href="login.html">Mon compte</a>
   </nav>
 </header>
 
@@ -136,6 +138,17 @@
           </select>
         </div>
 
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="form-group">
+            <label for="mot_de_passe">Mot de passe *</label>
+            <input type="password" id="mot_de_passe" name="mot_de_passe" class="form-control" placeholder="8 caractères minimum" required minlength="8">
+          </div>
+          <div class="form-group">
+            <label for="mot_de_passe_confirm">Confirmer *</label>
+            <input type="password" id="mot_de_passe_confirm" class="form-control" placeholder="Répétez le mot de passe" required minlength="8">
+          </div>
+        </div>
+
         <div class="form-group" style="margin-top:8px">
           <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;color:var(--gray-medium)">
             <input type="checkbox" id="cgv" required style="margin-top:3px;min-width:16px">
@@ -177,6 +190,17 @@ document.getElementById('inscription-form').addEventListener('submit', async fun
   btn.innerHTML = '<span class="spinner"></span> Enregistrement...';
   btn.disabled = true;
 
+  // Validation mot de passe
+  const mdp = document.getElementById('mot_de_passe').value;
+  const mdpConfirm = document.getElementById('mot_de_passe_confirm').value;
+  if (mdp !== mdpConfirm) {
+    errorDiv.textContent = 'Les mots de passe ne correspondent pas.';
+    errorDiv.style.display = 'block';
+    btn.innerHTML = 'Continuer vers le paiement →';
+    btn.disabled = false;
+    return;
+  }
+
   const data = {
     prenom: document.getElementById('prenom').value.trim(),
     nom: document.getElementById('nom').value.trim(),
@@ -187,6 +211,7 @@ document.getElementById('inscription-form').addEventListener('submit', async fun
     code_postal: document.getElementById('code_postal').value.trim(),
     ville: document.getElementById('ville').value.trim(),
     pays: document.getElementById('pays').value,
+    mot_de_passe: mdp,
     status: 'pending'
   };
 
