@@ -6,8 +6,7 @@
 
 (function () {
 
-  var SUPABASE_URL = 'https://ilycnutphhmuvaonkrsa.supabase.co';
-  var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlseWNudXRwaGhtdXZhb25rcnNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1MjY5NDcsImV4cCI6MjA5MDEwMjk0N30.80ipBwMVvAkC2f0Oz2Wzl8E6GjMwlLCoE72XbePtmnM';
+  var API_URL = 'https://iananoleads-backend.onrender.com';
 
   // Génération fingerprint navigateur (non-hardware, côté navigateur)
   function generateFingerprint() {
@@ -58,11 +57,10 @@
   // Vérification licence via Supabase
   async function verifyLicense(fingerprintHash) {
     try {
-      var resp = await fetch(SUPABASE_URL + '/rest/v1/licenses?fingerprint=eq.' + fingerprintHash + '&select=id,status,expires_at', {
-        headers: {
-          'apikey': SUPABASE_ANON,
-          'Authorization': 'Bearer ' + SUPABASE_ANON
-        }
+      var resp = await fetch(API_URL + '/api/auth/verify-license', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fingerprint: fingerprintHash })
       });
       if (!resp.ok) return null;
       var data = await resp.json();
