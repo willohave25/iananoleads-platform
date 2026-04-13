@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion — iaNanoLeads</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<section style="background:var(--dark-bg);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px">
+  <div style="width:100%;max-width:420px">
+
+    <div style="text-align:center;margin-bottom:40px">
+      <picture>
+        <source srcset="images/logos/logo-iananoleads-horizontal.webp" type="image/webp">
+        <img src="images/logos/logo-iananoleads-horizontal.png" alt="iaNanoLeads" height="44" style="margin:0 auto">
+      </picture>
+    </div>
+
+    <div style="background:var(--dark-bg-card);border:1px solid rgba(212,175,55,0.2);border-radius:16px;padding:40px">
+      <h1 style="font-size:22px;margin-bottom:8px">Accéder à mon compte</h1>
+      <p style="margin-bottom:28px;font-size:14px">Entrez votre email pour vous connecter.</p>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-email">Email *</label>
+          <input type="email" id="login-email" class="form-control" placeholder="jean@entreprise.com" required autofocus>
+        </div>
+
+        <div id="login-error" class="alert alert-error" style="display:none"></div>
+        <div id="login-success" class="alert alert-success" style="display:none"></div>
+
+        <button type="submit" id="login-btn" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">
+          Accéder à mon compte →
+        </button>
+      </form>
+
+      <p style="text-align:center;margin-top:20px;font-size:13px;color:var(--gray-medium)">
+        Pas encore de compte ? <a href="inscription.html" style="color:var(--primary-gold)">S'inscrire</a>
+      </p>
+    </div>
+
+    <p style="text-align:center;margin-top:20px;font-size:13px;color:var(--gray-dark)">
+      <a href="index.html" style="color:var(--gray-dark)">← Retour au site</a>
+    </p>
+
+  </div>
+</section>
+
+<script>
+const SUPABASE_URL = 'https://ilycnutphhmuvaonkrsa.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlseWNudXRwaGhtdXZhb25rcnNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1MjY5NDcsImV4cCI6MjA5MDEwMjk0N30.80ipBwMVvAkC2f0Oz2Wzl8E6GjMwlLCoE72XbePtmnM';
+
+// Si déjà connecté → dashboard
+if (localStorage.getItem('w2k_session')) {
+  window.location.href = 'dashboard.html';
+}
+
+document.getElementById('login-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('login-btn');
+  const errDiv = document.getElementById('login-error');
+  const okDiv = document.getElementById('login-success');
+  const email = document.getElementById('login-email').value.trim().toLowerCase();
+
+  errDiv.style.display = 'none';
+  okDiv.style.display = 'none';
+  btn.innerHTML = '<span class="spinner"></span>';
+  btn.disabled = true;
+
+  try {
+    // Chercher le client par email
+    const resp = await fetch(SUPABASE_URL + '/rest/v1/nanoleads_clients?email=eq.' + encodeURIComponent(email) + '&select=*', {
+      headers: {
+        'apikey': SUPABASE_ANON,
+        'Authorization': 'Bearer ' + SUPABASE_ANON
+      }
+    });
+
+    const data = await resp.json();
+
+    if (!data || data.length === 0) {
+      throw new Error('Email introuvable. <a href="inscription.html" style="color:var(--primary-gold)">Créer un compte →</a>');
+    }
+
+    const client = data[0];
+
+    // Sauvegarder la session en local
+    localStorage.setItem('w2k_session', JSON.stringify(client));
+
+    okDiv.textContent = 'Connexion réussie ! Redirection...';
+    okDiv.style.display = 'block';
+
+    setTimeout(function() {
+      window.location.href = 'dashboard.html';
+    }, 800);
+
+  } catch(err) {
+    errDiv.innerHTML = err.message;
+    errDiv.style.display = 'block';
+    btn.innerHTML = 'Accéder à mon compte →';
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
