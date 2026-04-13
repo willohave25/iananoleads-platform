@@ -1,0 +1,37 @@
+# Variables d'environnement (NE JAMAIS committer)
+  backend/.env
+  .env
+  *.env
+
+  # Dépendances Node.js
+  backend/node_modules/
+  node_modules/
+
+  # Logs
+  *.log
+  npm-debug.log*
+
+  # Build
+  dist/
+  build/
+
+  # Système
+  .DS_Store
+  Thumbs.db
+  desktop.ini
+
+  # IDE
+  .vscode/
+  .idea/
+  *.swp
+  *.swo
+
+  # Fichiers temporaires
+  *.tmp
+  *.temp
+
+  # Credentials (sécurité)
+  credentials.txt
+  *.pem
+  *.key
+  *.cert
