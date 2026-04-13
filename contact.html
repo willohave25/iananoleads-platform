@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact iaNanoLeads — Support 24/7</title>
+  <meta name="description" content="Contactez support iaNanoLeads : email, WhatsApp. Aide 24/7 automatisée. Questions leads B2B, tarifs €49/mois.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/geolocation.js" defer></script>
+  <script src="js/currency-converter.js" defer></script>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<header>
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <picture>
+        <source srcset="images/logos/logo-iananoleads-horizontal.webp" type="image/webp">
+        <img src="images/logos/logo-iananoleads-horizontal.png" alt="iaNanoLeads" width="180" height="44">
+      </picture>
+    </a>
+    <div class="nav-links nav-desktop">
+      <a href="index.html">Accueil</a>
+      <a href="fonctionnalites.html">Fonctionnalités</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="temoignages.html">Témoignages</a>
+      <a href="a-propos.html">À Propos</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+    <div class="nav-cta nav-desktop">
+      <a href="tarifs.html" class="btn btn-primary">Démarrer — <span data-price>€49</span>/mois</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <nav class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Accueil</a>
+    <a href="fonctionnalites.html">Fonctionnalités</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="temoignages.html">Témoignages</a>
+    <a href="a-propos.html">À Propos</a>
+    <a href="contact.html">Contact</a>
+    <a href="tarifs.html" class="btn btn-primary">Démarrer — <span data-price>€49</span>/mois</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="page-hero hero">
+  <div class="hero-bg" style="background-image:url('images/heroes/hero-contact.webp')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span class="sep">›</span>
+        <span class="current">Contact</span>
+      </div>
+      <h1>Contactez-Nous <span class="gold">Facilement</span></h1>
+      <p class="hero-subtitle">Besoin d'aide pour la génération de leads B2B ? Contactez iaNanoLeads via formulaire, email ou WhatsApp. Réponse rapide garantie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT GRID -->
+<section style="background:var(--dark-bg);padding:100px 0">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- FORMULAIRE -->
+      <div>
+        <h2 style="margin-bottom:32px">Envoyez-nous un <span class="text-gold">message</span></h2>
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="contact-nom">Nom complet *</label>
+            <input type="text" id="contact-nom" name="nom" class="form-control" placeholder="Jean Dupont" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email *</label>
+            <input type="email" id="contact-email" name="email" class="form-control" placeholder="jean@entreprise.com" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-entreprise">Entreprise</label>
+            <input type="text" id="contact-entreprise" name="entreprise" class="form-control" placeholder="Nom de votre entreprise">
+          </div>
+          <div class="form-group">
+            <label for="contact-sujet">Sujet *</label>
+            <select id="contact-sujet" name="sujet" class="form-control" required>
+              <option value="">Sélectionnez un sujet</option>
+              <option>Question sur les fonctionnalités</option>
+              <option>Question sur les tarifs</option>
+              <option>Problème technique</option>
+              <option>Gestion de licence</option>
+              <option>Demande de remboursement</option>
+              <option>Partenariat</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message *</label>
+            <textarea id="contact-message" name="message" class="form-control" placeholder="Décrivez votre demande..." required style="min-height:140px"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Envoyer le message ➤</button>
+          <p style="font-size:12px;color:var(--gray-dark);margin-top:12px;margin-bottom:0">Réponse sous 24h maximum. Support humain Lun-Ven 9h-18h CET.</p>
+        </form>
+      </div>
+
+      <!-- COORDONNÉES -->
+      <div>
+        <h2 style="margin-bottom:32px">Nos <span class="text-gold">coordonnées</span></h2>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">📧</div>
+          <div>
+            <h4>Email support</h4>
+            <a href="mailto:support@iananoleads.com">support@iananoleads.com</a>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">💬</div>
+          <div>
+            <h4>WhatsApp</h4>
+            <a href="https://wa.me/33642535759" target="_blank" rel="noopener">+33 6 42 53 57 59</a>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">🏢</div>
+          <div>
+            <h4>Entreprise</h4>
+            <p>W2K-Digital<br>SIRET : 51456299000010</p>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="contact-info-icon">📮</div>
+          <div>
+            <h4>Email entreprise</h4>
+            <a href="mailto:contact@w2k-digital.com">contact@w2k-digital.com</a>
+          </div>
+        </div>
+
+        <div style="background:var(--dark-bg-card);border:1px solid rgba(212,175,55,0.15);border-radius:var(--radius);padding:24px;margin-top:8px">
+          <h4 style="color:var(--white);margin-bottom:12px;font-size:14px">⏰ Horaires du support</h4>
+          <p style="font-size:14px;margin:0;color:var(--gray-medium)">
+            <strong style="color:var(--primary-gold)">24/7</strong> — Assistant virtuel W2K automatisé<br>
+            <strong style="color:var(--white)">Lun-Ven 9h-18h CET</strong> — Support humain
+          </p>
+        </div>
+
+        <!-- RÉSEAUX SOCIAUX -->
+        <div style="margin-top:28px">
+          <h4 style="color:var(--white);font-size:14px;margin-bottom:16px">Suivez-nous</h4>
+          <div style="display:flex;gap:12px">
+            <a href="#" class="btn btn-secondary" style="padding:10px 16px;font-size:13px">LinkedIn</a>
+            <a href="#" class="btn btn-secondary" style="padding:10px 16px;font-size:13px">Twitter</a>
+            <a href="#" class="btn btn-secondary" style="padding:10px 16px;font-size:13px">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ RAPIDE -->
+<section style="background:var(--dark-bg-alt);padding:80px 0">
+  <div class="container" style="max-width:700px">
+    <div class="section-title">
+      <h2>FAQ <span>Rapide</span></h2>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Comment fonctionne iaNanoLeads ? <span class="toggle">+</span></div>
+      <div class="faq-answer"><p>Sélection pays + secteur → Génération automatique leads et emails personnalisés → Téléchargement CSV/JSON. Tout en quelques minutes grâce à la technologie propriétaire W2K-Digital.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Quel est le tarif ? <span class="toggle">+</span></div>
+      <div class="faq-answer"><p><span data-price>€49</span>/mois tout illimité. Leads, emails, téléchargements, dashboard, support 24/7 et mises à jour inclus. Aucun frais caché.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Y a-t-il un essai gratuit ? <span class="toggle">+</span></div>
+      <div class="faq-answer"><p>Non, mais nous offrons une garantie satisfait ou remboursé 30 jours sur le premier mois. Activation immédiate, zéro risque.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Puis-je annuler mon abonnement ? <span class="toggle">+</span></div>
+      <div class="faq-answer"><p>Oui, résiliation possible à tout moment depuis votre dashboard, avec effet en fin de mois en cours. Aucun engagement longue durée.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Le support est-il disponible 24/7 ? <span class="toggle">+</span></div>
+      <div class="faq-answer"><p>L'assistant virtuel W2K répond instantanément 24/7. Le support humain est disponible Lundi-Vendredi 9h-18h CET pour les cas complexes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container" style="max-width:640px;text-align:center">
+    <h2>Prêt à commencer votre <span>prospection</span> ?</h2>
+    <p>Rejoignez 200+ entreprises qui utilisent iaNanoLeads pour leur prospection B2B.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px">
+      <a href="tarifs.html" class="btn btn-primary btn-lg">Démarrer — <span data-price>€49</span>/mois</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <picture>
+        <source srcset="images/logos/logo-iananoleads-horizontal.webp" type="image/webp">
+        <img src="images/logos/logo-iananoleads-horizontal.png" alt="iaNanoLeads" width="160" height="40" loading="lazy">
+      </picture>
+      <p>Solution SaaS de génération de leads B2B automatisée par technologie propriétaire W2K-Digital.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Produit</h4>
+      <ul>
+        <li><a href="fonctionnalites.html">Fonctionnalités</a></li>
+        <li><a href="tarifs.html">Tarifs</a></li>
+        <li><a href="temoignages.html">Témoignages</a></li>
+        <li><a href="a-propos.html">À Propos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="mailto:support@iananoleads.com">support@iananoleads.com</a></li>
+        <li><a href="https://wa.me/33642535759" target="_blank" rel="noopener">WhatsApp</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Légal</h4>
+      <ul>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="confidentialite.html">Confidentialité</a></li>
+        <li><a href="cgv.html">CGV</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 W2K-Digital. Tous droits réservés.</p>
+    <p>SIRET : 51456299000010</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/chatbot.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fonctionnalités iaNanoLeads SaaS | Leads B2B Automatisés</title>
+  <meta name="description" content="Découvrez les fonctionnalités SaaS de iaNanoLeads : filtrage leads B2B, emails personnalisés automatiques, dashboard analytics. Tout illimité €49/mois.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/geolocation.js" defer></script>
+  <script src="js/currency-converter.js" defer></script>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<header>
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <picture>
+        <source srcset="images/logos/logo-iananoleads-horizontal.webp" type="image/webp">
+        <img src="images/logos/logo-iananoleads-horizontal.png" alt="iaNanoLeads" width="180" height="44">
+      </picture>
+    </a>
+    <div class="nav-links nav-desktop">
+      <a href="index.html">Accueil</a>
+      <a href="fonctionnalites.html" class="active">Fonctionnalités</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="temoignages.html">Témoignages</a>
+      <a href="a-propos.html">À Propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-cta nav-desktop">
+      <a href="tarifs.html" class="btn btn-primary">Démarrer — <span data-price>€49</span>/mois</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <nav class="nav-mobile" id="nav-mobile">
+    <a href="index.html">Accueil</a>
+    <a href="fonctionnalites.html">Fonctionnalités</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="temoignages.html">Témoignages</a>
+    <a href="a-propos.html">À Propos</a>
+    <a href="contact.html">Contact</a>
+    <a href="tarifs.html" class="btn btn-primary">Démarrer — <span data-price>€49</span>/mois</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="page-hero hero">
+  <div class="hero-bg" style="background-image:url('images/heroes/hero-features.webp')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span class="sep">›</span>
+        <span class="current">Fonctionnalités</span>
+      </div>
+      <h1>Fonctionnalités <span class="gold">Puissantes</span><br>pour Leads B2B</h1>
+      <p class="hero-subtitle">Explorez les fonctionnalités avancées d'iaNanoLeads, votre allié pour une prospection commerciale automatisée. À <span data-price>€49</span>/mois, accédez à des outils optimisés ROI en Europe et Afrique francophone.</p>
+      <a href="tarifs.html" class="btn btn-primary btn-lg">Démarrer maintenant</a>
+    </div>
+  </div>
+</section>
+
+<!-- RECHERCHE & FILTRAGE -->
+<section class="features-section">
+  <div class="container">
+    <div class="feature-detail">
+      <div class="feature-detail-text">
+        <h2>Recherche & Filtrage <span class="text-gold">multi-critères</span></h2>
+        <p>Nos algorithmes avancés de ciblage et notre moteur de recherche propriétaire W2K-Digital vous permettent de filtrer les leads B2B avec une précision chirurgicale.</p>
+        <p>Sélectionnez pays, secteurs, taille d'entreprise et obtenez des résultats qualifiés en quelques secondes pour une prospection efficace et rentable.</p>
+        <ul class="feature-list">
+          <li>Filtrage par pays (Europe + Afrique francophone)</li>
+          <li>Filtrage par secteur d'activité (15+ secteurs)</li>
+          <li>Filtrage par taille d'entreprise et mots-clés</li>
+          <li>Résultats qualifiés en temps réel</li>
+          <li>Export immédiat CSV ou JSON</li>
+        </ul>
+      </div>
+      <div class="feature-visual">
+        <picture>
+          <source srcset="images/icons/features/icon-search-leads.webp" type="image/webp">
+          <img src="images/icons/features/icon-search-leads.png" alt="Recherche leads" loading="lazy" width="80" height="80">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GÉNÉRATION EMAILS -->
+<section class="features-alt">
+  <div class="container">
+    <div class="feature-detail reverse">
+      <div class="feature-detail-text">
+        <h2>Génération d'emails <span class="text-gold">personnalisés</span></h2>
+        <p>Génération automatique d'emails contextuels adaptés à chaque lead. Notre moteur de personnalisation avancée intègre secteur, pays et actualités récentes pour un taux d'ouverture maximal.</p>
+        <p>Personnalisez en masse sans effort et boostez vos conversions B2B grâce à des messages percutants et pertinents.</p>
+        <ul class="feature-list">
+          <li>Templates par secteur et par pays</li>
+          <li>Intégration actualités secteur via NewsAPI</li>
+          <li>Variables dynamiques : nom, entreprise, secteur</li>
+          <li>Objet et corps optimisés pour l'ouverture</li>
+          <li>Génération en masse illimitée</li>
+        </ul>
+      </div>
+      <div class="feature-visual">
+        <picture>
+          <source srcset="images/icons/features/icon-auto-email.webp" type="image/webp">
+          <img src="images/icons/features/icon-auto-email.png" alt="Emails automatiques" loading="lazy" width="80" height="80">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉLÉCHARGEMENTS -->
+<section class="features-section">
+  <div class="container">
+    <div class="feature-detail">
+      <div class="feature-detail-text">
+        <h2>Téléchargement leads <span class="text-gold">CSV/JSON</span></h2>
+        <p>Téléchargements illimités inclus dans votre abonnement <span data-price>€49</span>/mois. Exportez vos leads qualifiés en CSV ou JSON pour une intégration immédiate dans vos outils CRM.</p>
+        <p>Format structuré et propre, prêt pour la prospection dès le téléchargement.</p>
+        <ul class="feature-list">
+          <li>Format CSV et JSON disponibles</li>
+          <li>Champs : nom, email, téléphone, entreprise, secteur, pays</li>
+          <li>Compatible HubSpot, Pipedrive, Salesforce</li>
+          <li>Téléchargements illimités sans surcoût</li>
+          <li>URL de téléchargement sécurisée</li>
+        </ul>
+      </div>
+      <div class="feature-visual">
+        <picture>
+          <source srcset="images/icons/features/icon-download-leads.webp" type="image/webp">
+          <img src="images/icons/features/icon-download-leads.png" alt="Téléchargement CSV" loading="lazy" width="80" height="80">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="features-alt">
+  <div class="container">
+    <div class="feature-detail reverse">
+      <div class="feature-detail-text">
+        <h2>Dashboard analytics <span class="text-gold">temps réel</span></h2>
+        <p>Suivez vos performances en temps réel avec des statistiques détaillées : nombre de leads générés, emails envoyés, taux d'ouverture, ROI estimé.</p>
+        <p>Graphiques intuitifs et alertes personnalisées pour optimiser votre stratégie B2B de façon data-driven.</p>
+        <ul class="feature-list">
+          <li>Statistiques leads générés par période</li>
+          <li>Historique complet des téléchargements</li>
+          <li>Statut abonnement et renouvellement</li>
+          <li>Alertes et notifications personnalisées</li>
+          <li>ROI estimé calculé automatiquement</li>
+        </ul>
+      </div>
+      <div class="feature-visual">
+        <picture>
+          <source srcset="images/icons/features/icon-dashboard.webp" type="image/webp">
+          <img src="images/icons/features/icon-dashboard.png" alt="Dashboard analytics" loading="lazy" width="80" height="80">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT & AUTRES FEATURES -->
+<section class="features-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Et bien <span>plus encore</span></h2>
+      <p>Des fonctionnalités pensées pour maximiser votre efficacité commerciale à chaque étape.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <picture>
+          <source srcset="images/icons/features/icon-chatbot-support.webp" type="image/webp">
+          <img src="images/icons/features/icon-chatbot-support.png" alt="Support" class="card-icon" loading="lazy" width="56" height="56">
+        </picture>
+        <h3>Support automatisé 24/7</h3>
+        <p>Assistant virtuel W2K pour réponses instantanées. Zéro downtime pour votre prospection. Escalade vers support humain si besoin.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="font-size:40px;display:flex;align-items:center">🔒</div>
+        <h3>Sécurité & RGPD</h3>
+        <p>Données chiffrées SSL/TLS, conformité RGPD stricte, hébergement Supabase sécurisé. Leads sourcés légalement, paix d'esprit garantie.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="font-size:40px;display:flex;align-items:center">🌍</div>
+        <h3>Multi-langue & Multi-devise</h3>
+        <p>Interface adaptée automatiquement à votre pays : FR, EN, DE, ES, Swahili. Prix convertis en EUR, USD, GBP, FCFA ou KES.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="font-size:40px;display:flex;align-items:center">📰</div>
+        <h3>Actualités secteur temps réel</h3>
+        <p>Intégration NewsAPI pour contextualiser chaque email avec les dernières actualités du secteur ciblé. Taux d'ouverture boosté.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="font-size:40px;display:flex;align-items:center">🖥️</div>
+        <h3>Licence 1 ordinateur</h3>
+        <p>Sécurité renforcée par fingerprint hardware. 1 abonnement = 1 ordinateur dédié pour protéger votre investissement.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="font-size:40px;display:flex;align-items:center">🔗</div>
+        <h3>Intégrations futures</h3>
+        <p>Bientôt : connexions directes CRM (HubSpot, Pipedrive), API ouverte pour automatisations custom. Mises à jour gratuites incluses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container" style="max-width:640px;text-align:center">
+    <h2>Prêt à booster votre <span>prospection</span> ?</h2>
+    <p>Accédez à toutes ces fonctionnalités pour seulement <span data-price>€49</span>/mois. Activation immédiate, garantie 30 jours.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px">
+      <a href="tarifs.html" class="btn btn-primary btn-lg">Démarrer maintenant</a>
+      <a href="contact.html" class="btn btn-secondary btn-lg">Poser une question</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <picture>
+        <source srcset="images/logos/logo-iananoleads-horizontal.webp" type="image/webp">
+        <img src="images/logos/logo-iananoleads-horizontal.png" alt="iaNanoLeads" width="160" height="40" loading="lazy">
+      </picture>
+      <p>Solution SaaS de génération de leads B2B automatisée par technologie propriétaire W2K-Digital. Europe & Afrique francophone.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Produit</h4>
+      <ul>
+        <li><a href="fonctionnalites.html">Fonctionnalités</a></li>
+        <li><a href="tarifs.html">Tarifs</a></li>
+        <li><a href="temoignages.html">Témoignages</a></li>
+        <li><a href="a-propos.html">À Propos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="mailto:support@iananoleads.com">support@iananoleads.com</a></li>
+        <li><a href="https://wa.me/33642535759" target="_blank" rel="noopener">WhatsApp</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Légal</h4>
+      <ul>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="confidentialite.html">Confidentialité</a></li>
+        <li><a href="cgv.html">CGV</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 W2K-Digital. Tous droits réservés.</p>
+    <p>SIRET : 51456299000010</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/chatbot.js" defer></script>
+</body>
+</html>
