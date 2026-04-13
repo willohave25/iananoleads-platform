@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Compte — iaNanoLeads Dashboard</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .dash-layout {
+      display: grid;
+      min-height: 100vh;
+    }
+    @media (min-width: 769px) {
+      .dash-layout { grid-template-columns: 240px 1fr; }
+    }
+
+    /* Sidebar */
+    .dash-sidebar {
+      background: var(--dark-bg-alt);
+      border-right: 1px solid rgba(212,175,55,0.15);
+      padding: 32px 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .dash-logo {
+      padding: 0 24px 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 16px;
+    }
+
+    .dash-logo img { height: 36px; }
+
+    .dash-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      color: var(--gray-medium);
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s;
+      border-left: 3px solid transparent;
+    }
+
+    .dash-nav a:hover,
+    .dash-nav a.active {
+      color: var(--primary-gold);
+      background: rgba(212,175,55,0.06);
+      border-left-color: var(--primary-gold);
+    }
+
+    .dash-nav .icon { font-size: 18px; width: 20px; text-align: center; }
+
+    .dash-nav .section-label {
+      padding: 20px 24px 8px;
+      font-size: 11px;
+      color: var(--gray-dark);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    /* Main content */
+    .dash-main {
+      background: var(--dark-bg);
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .dash-topbar {
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .dash-topbar h2 {
+      font-size: 18px;
+      margin: 0;
+      color: var(--white);
+    }
+
+    .dash-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dash-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: var(--dark-bg);
+      font-size: 14px;
+    }
+
+    .dash-user-name {
+      font-size: 14px;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .dash-content {
+      padding: 32px;
+    }
+
+    /* Panneaux */
+    .dash-panel { display: none; }
+    .dash-panel.active { display: block; }
+
+    /* Stat cards */
+    .dash-stats {
+      display: grid;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 481px) { .dash-stats { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1025px) { .dash-stats { grid-template-columns: repeat(4, 1fr); } }
+
+    .dash-stat {
+      background: var(--dark-bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .dash-stat-label {
+      font-size: 12px;
+      color: var(--gray-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .dash-stat-value {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary-gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .dash-stat-sub {
+      font-size: 12px;
+      color: var(--gray-dark);
+    }
+
+    /* Generateur */
+    .generator-card {
+      background: var(--dark-bg-card);
+      border: 1px solid rgba(212,175,55,0.15);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .generator-card h3 {
+      color: var(--white);
+      margin-bottom: 24px;
+      font-size: 18px;
+    }
+
+    .gen-grid {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 769px) { .gen-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* Résultat génération */
+    .result-box {
+      background: rgba(212,175,55,0.05);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .result-box.show { display: block; }
+
+    /* Historique */
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .history-table th {
+      text-align: left;
+      padding: 12px 16px;
+      color: var(--gray-medium);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .history-table td {
+      padding: 14px 16px;
+      color: var(--gray-medium);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .history-table tr:hover td { background: rgba(212,175,55,0.03); }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .badge-active { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .badge-pending { background: rgba(234,179,8,0.15); color: #fbbf24; }
+    .badge-expired { background: rgba(239,68,68,0.15); color: #f87171; }
+
+    /* Abonnement */
+    .sub-card {
+      background: var(--dark-bg-card);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    /* Mobile sidebar toggle */
+    .dash-mobile-header {
+      display: none;
+      background: var(--dark-bg-alt);
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+      padding: 16px 20px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 768px) {
+      .dash-mobile-header { display: flex; }
+      .dash-sidebar { display: none; position: fixed; top: 0; left: 0; bottom: 0; z-index: 200; width: 240px; }
+      .dash-sidebar.open { display: block; }
+      .dash-topbar { display: none; }
+      .dash-content { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Mobile header -->
+<div class="dash-mobile-header">
+  <picture>
+    <source srcset="images/logos/logo-iananoleads-horizontal.webp" type="image/webp">
+    <img src="images/logos/logo-iananoleads-horizontal.png" alt="iaNanoLeads" height="32">
+  </picture>
+  <button id="mobile-menu-btn" style="background:none;border:none;color:var(--white);font-size:22px;cursor:pointer">☰</button>
+</div>
+
+<div class="dash-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="dash-sidebar" id="dash-sidebar">
+    <div class="dash-logo">
+      <picture>
+        <source srcset="images/logos/logo-iananoleads-horizontal.webp" type="image/webp">
+        <img src="images/logos/logo-iananoleads-horizontal.png" alt="iaNanoLeads" height="32">
+      </picture>
+    </div>
+
+    <nav class="dash-nav">
+      <div class="section-label">Principal</div>
+      <a href="#" class="active" data-panel="accueil">
+        <span class="icon">🏠</span> Accueil
+      </a>
+      <a href="#" data-panel="generer">
+        <span class="icon">⚡</span> Générer des leads
+      </a>
+      <a href="#" data-panel="emails">
+        <span class="icon">✉️</span> Générer des emails
+      </a>
+      <a href="#" data-panel="historique">
+        <span class="icon">📋</span> Historique
+      </a>
+
+      <div class="section-label">Compte</div>
+      <a href="#" data-panel="abonnement">
+        <span class="icon">💎</span> Mon abonnement
+      </a>
+      <a href="#" data-panel="profil">
+        <span class="icon">👤</span> Mon profil
+      </a>
+      <a href="#" data-panel="support">
+        <span class="icon">💬</span> Support
+      </a>
+
+      <div style="padding:24px 24px 0;border-top:1px solid rgba(255,255,255,0.06);margin-top:16px">
+        <a href="index.html" style="font-size:13px;color:var(--gray-dark)">← Retour au site</a>
+      </div>
+      <div style="padding:8px 24px">
+        <a href="#" id="logout-btn" style="font-size:13px;color:#f87171">Déconnexion</a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="dash-main">
+
+    <!-- Topbar -->
+    <div class="dash-topbar">
+      <h2 id="topbar-title">Tableau de bord</h2>
+      <div class="dash-user">
+        <div class="dash-avatar" id="user-avatar">?</div>
+        <span class="dash-user-name" id="user-name">Chargement...</span>
+      </div>
+    </div>
+
+    <div class="dash-content">
+
+      <!-- ===== ACCUEIL ===== -->
+      <div class="dash-panel active" id="panel-accueil">
+        <p style="color:var(--gray-medium);margin-bottom:28px">Bienvenue, <strong id="welcome-name" style="color:var(--white)">...</strong> 👋</p>
+
+        <div class="dash-stats">
+          <div class="dash-stat">
+            <div class="dash-stat-label">Leads générés</div>
+            <div class="dash-stat-value" id="stat-leads">0</div>
+            <div class="dash-stat-sub">Total depuis activation</div>
+          </div>
+          <div class="dash-stat">
+            <div class="dash-stat-label">Emails générés</div>
+            <div class="dash-stat-value" id="stat-emails">0</div>
+            <div class="dash-stat-sub">Total depuis activation</div>
+          </div>
+          <div class="dash-stat">
+            <div class="dash-stat-label">Téléchargements</div>
+            <div class="dash-stat-value" id="stat-downloads">0</div>
+            <div class="dash-stat-sub">Fichiers CSV/JSON</div>
+          </div>
+          <div class="dash-stat">
+            <div class="dash-stat-label">Statut licence</div>
+            <div class="dash-stat-value" style="font-size:20px" id="stat-status">—</div>
+            <div class="dash-stat-sub" id="stat-expiry">—</div>
+          </div>
+        </div>
+
+        <!-- Actions rapides -->
+        <h3 style="color:var(--white);margin-bottom:20px;font-size:16px">Actions rapides</h3>
+        <div class="grid grid-3" style="margin-bottom:32px">
+          <div class="card" style="cursor:pointer;text-align:center" onclick="showPanel('generer')">
+            <div style="font-size:36px;margin-bottom:12px">⚡</div>
+            <h3 style="font-size:15px">Générer des leads</h3>
+            <p style="font-size:13px">Sélectionnez pays + secteur</p>
+          </div>
+          <div class="card" style="cursor:pointer;text-align:center" onclick="showPanel('emails')">
+            <div style="font-size:36px;margin-bottom:12px">✉️</div>
+            <h3 style="font-size:15px">Générer des emails</h3>
+            <p style="font-size:13px">Personnalisés avec actualités</p>
+          </div>
+          <div class="card" style="cursor:pointer;text-align:center" onclick="showPanel('historique')">
+            <div style="font-size:36px;margin-bottom:12px">📋</div>
+            <h3 style="font-size:15px">Historique</h3>
+            <p style="font-size:13px">Vos dernières générations</p>
+          </div>
+        </div>
+
+        <!-- Licence status -->
+        <div id="licence-banner" style="display:none;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:var(--radius);padding:16px 20px;margin-bottom:20px">
+          <p style="color:#f87171;font-size:14px;margin:0">⚠️ Votre licence est inactive. <a href="#" onclick="showPanel('abonnement')" style="color:var(--primary-gold)">Activer mon abonnement →</a></p>
+        </div>
+      </div>
+
+      <!-- ===== GÉNÉRER LEADS ===== -->
+      <div class="dash-panel" id="panel-generer">
+        <h2 style="margin-bottom:8px">Générer des <span class="text-gold">leads B2B</span></h2>
+        <p style="margin-bottom:28px">Sélectionnez vos critères et téléchargez vos leads qualifiés.</p>
+
+        <div class="generator-card">
+          <h3>⚡ Nouveau batch de leads</h3>
+          <div class="gen-grid">
+            <div class="form-group">
+              <label>Pays cible *</label>
+              <select id="gen-pays" class="form-control">
+                <option value="FR">France</option>
+                <option value="BE">Belgique</option>
+                <option value="CH">Suisse</option>
+                <option value="SN">Sénégal</option>
+                <option value="CI">Côte d'Ivoire</option>
+                <option value="CM">Cameroun</option>
+                <option value="DE">Allemagne</option>
+                <option value="ES">Espagne</option>
+                <option value="MA">Maroc</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Secteur d'activité *</label>
+              <select id="gen-secteur" class="form-control">
+                <option value="tech">Tech / Innovation</option>
+                <option value="finance">Finance / Banque</option>
+                <option value="retail">Retail / E-commerce</option>
+                <option value="healthcare">Healthcare / Santé</option>
+                <option value="real-estate">Immobilier</option>
+                <option value="hospitality">Hospitality / Tourisme</option>
+                <option value="education">Education / Formation</option>
+                <option value="manufacturing">Manufacturing / Industrie</option>
+                <option value="consulting">Consulting</option>
+                <option value="marketing">Marketing / Communication</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Nombre de leads</label>
+              <select id="gen-count" class="form-control">
+                <option value="50">50 leads</option>
+                <option value="100" selected>100 leads</option>
+                <option value="200">200 leads</option>
+                <option value="500">500 leads</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Format</label>
+              <select id="gen-format" class="form-control">
+                <option value="csv">CSV (Excel)</option>
+                <option value="json">JSON</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Mots-clés (optionnel)</label>
+            <input type="text" id="gen-keywords" class="form-control" placeholder="ex: directeur, startup, PME...">
+          </div>
+
+          <button id="gen-btn" class="btn btn-primary btn-lg">⚡ Générer mes leads</button>
+
+          <div class="result-box" id="gen-result">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+              <span style="font-size:24px">✅</span>
+              <div>
+                <strong style="color:var(--white)" id="gen-result-title">100 leads générés !</strong>
+                <p style="font-size:13px;margin:2px 0 0" id="gen-result-sub">France · Tech</p>
+              </div>
+            </div>
+            <div id="gen-preview" style="background:var(--dark-bg);border-radius:8px;padding:16px;margin-bottom:16px;overflow-x:auto;font-size:12px;color:var(--gray-medium);font-family:monospace"></div>
+            <a id="gen-download-btn" href="#" class="btn btn-primary" target="_blank">⬇️ Télécharger le fichier</a>
+          </div>
+
+          <div id="gen-error" class="alert alert-error" style="display:none;margin-top:16px"></div>
+        </div>
+      </div>
+
+      <!-- ===== GÉNÉRER EMAILS ===== -->
+      <div class="dash-panel" id="panel-emails">
+        <h2 style="margin-bottom:8px">Générer des <span class="text-gold">emails personnalisés</span></h2>
+        <p style="margin-bottom:28px">Collez vos leads au format JSON ou CSV pour générer des emails contextuels.</p>
+
+        <div class="generator-card">
+          <h3>✉️ Génération d'emails en masse</h3>
+          <div class="gen-grid">
+            <div class="form-group">
+              <label>Secteur</label>
+              <select id="email-secteur" class="form-control">
+                <option value="tech">Tech</option>
+                <option value="finance">Finance</option>
+                <option value="retail">Retail</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="real-estate">Immobilier</option>
+                <option value="hospitality">Hospitality</option>
+                <option value="education">Education</option>
+                <option value="manufacturing">Manufacturing</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Pays</label>
+              <select id="email-pays" class="form-control">
+                <option value="FR">France</option>
+                <option value="BE">Belgique</option>
+                <option value="SN">Sénégal</option>
+                <option value="CI">Côte d'Ivoire</option>
+                <option value="CM">Cameroun</option>
+                <option value="DE">Allemagne</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Nom de l'expéditeur</label>
+            <input type="text" id="email-expediteur" class="form-control" placeholder="Jean Martin — iaNanoLeads">
+          </div>
+          <div class="form-group">
+            <label>Leads (JSON) — format : [{"prenom":"Jean","nom":"Dupont","entreprise":"TechCo","secteur":"tech","pays":"France"}]</label>
+            <textarea id="email-leads" class="form-control" style="min-height:120px;font-family:monospace;font-size:12px" placeholder='[{"prenom":"Jean","nom":"Dupont","entreprise":"TechCo","secteur":"tech","pays":"France"}]'></textarea>
+          </div>
+
+          <button id="email-btn" class="btn btn-primary btn-lg">✉️ Générer les emails</button>
+
+          <div class="result-box" id="email-result">
+            <strong style="color:var(--white)" id="email-result-title">Emails générés !</strong>
+            <div id="email-preview" style="margin-top:16px;display:flex;flex-direction:column;gap:16px"></div>
+          </div>
+
+          <div id="email-error" class="alert alert-error" style="display:none;margin-top:16px"></div>
+        </div>
+      </div>
+
+      <!-- ===== HISTORIQUE ===== -->
+      <div class="dash-panel" id="panel-historique">
+        <h2 style="margin-bottom:28px">Historique des <span class="text-gold">générations</span></h2>
+        <div style="background:var(--dark-bg-card);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden">
+          <div style="padding:20px 24px;border-bottom:1px solid rgba(255,255,255,0.06)">
+            <h3 style="font-size:15px;color:var(--white);margin:0">Vos derniers batches</h3>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Pays</th>
+                  <th>Secteur</th>
+                  <th>Leads</th>
+                  <th>Statut</th>
+                  <th>Télécharger</th>
+                </tr>
+              </thead>
+              <tbody id="history-body">
+                <tr><td colspan="6" style="text-align:center;padding:32px;color:var(--gray-dark)">Aucune génération pour l'instant</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ABONNEMENT ===== -->
+      <div class="dash-panel" id="panel-abonnement">
+        <h2 style="margin-bottom:28px">Mon <span class="text-gold">abonnement</span></h2>
+        <div class="sub-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:28px">
+            <div>
+              <div class="pricing-badge" style="display:inline-block;margin-bottom:12px">PROFESSIONAL</div>
+              <div style="font-size:36px;font-weight:800;font-family:var(--font-heading);color:var(--primary-gold)">€49<span style="font-size:16px;color:var(--gray-medium)">/mois</span></div>
+            </div>
+            <div id="sub-status-block">
+              <span class="badge badge-pending" id="sub-badge">En attente</span>
+            </div>
+          </div>
+
+          <div style="display:grid;gap:12px;margin-bottom:28px">
+            <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:14px">
+              <span style="color:var(--gray-medium)">Statut</span>
+              <span style="color:var(--white)" id="sub-status-text">En attente d'activation</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:14px">
+              <span style="color:var(--gray-medium)">Prochain renouvellement</span>
+              <span style="color:var(--white)" id="sub-expiry">—</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:12px 0;font-size:14px">
+              <span style="color:var(--gray-medium)">Licence ordinateur</span>
+              <span style="color:var(--primary-gold)" id="sub-fp">—</span>
+            </div>
+          </div>
+
+          <div id="sub-inactive-msg" style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);border-radius:var(--radius);padding:20px;margin-bottom:20px">
+            <p style="font-size:14px;color:var(--gray-medium);margin:0 0 12px">Votre abonnement n'est pas encore actif. Contactez-nous pour finaliser le paiement.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <a href="mailto:support@iananoleads.com" class="btn btn-primary" style="font-size:13px;padding:10px 20px">📧 Email</a>
+              <a href="https://wa.me/33642535759" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size:13px;padding:10px 20px">💬 WhatsApp</a>
+            </div>
+          </div>
+
+          <div id="sub-active-msg" style="display:none">
+            <ul class="pricing-features" style="margin-bottom:20px">
+              <li><span class="check">✓</span> Leads illimités</li>
+              <li><span class="check">✓</span> Emails personnalisés illimités</li>
+              <li><span class="check">✓</span> Téléchargements CSV/JSON illimités</li>
+              <li><span class="check">✓</span> Support 24/7</li>
+              <li><span class="check">✓</span> Mises à jour incluses</li>
+            </ul>
+            <button id="cancel-btn" class="btn btn-secondary" style="font-size:13px;padding:10px 20px;border-color:rgba(239,68,68,0.4);color:#f87171">Résilier mon abonnement</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PROFIL ===== -->
+      <div class="dash-panel" id="panel-profil">
+        <h2 style="margin-bottom:28px">Mon <span class="text-gold">profil</span></h2>
+        <div style="background:var(--dark-bg-card);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px;max-width:560px">
+          <div id="profil-infos" style="display:grid;gap:16px"></div>
+          <div style="margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06)">
+            <p style="font-size:13px;color:var(--gray-medium);margin:0">Pour modifier vos informations, contactez : <a href="mailto:support@iananoleads.com" style="color:var(--primary-gold)">support@iananoleads.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SUPPORT ===== -->
+      <div class="dash-panel" id="panel-support">
+        <h2 style="margin-bottom:28px">Support <span class="text-gold">W2K-Digital</span></h2>
+        <div class="grid grid-2" style="max-width:700px">
+          <div class="card" style="text-align:center">
+            <div style="font-size:40px;margin-bottom:16px">📧</div>
+            <h3>Email support</h3>
+            <p style="font-size:14px">Réponse sous 24h</p>
+            <a href="mailto:support@iananoleads.com" class="btn btn-primary" style="margin-top:12px">support@iananoleads.com</a>
+          </div>
+          <div class="card" style="text-align:center">
+            <div style="font-size:40px;margin-bottom:16px">💬</div>
+            <h3>WhatsApp</h3>
+            <p style="font-size:14px">Lun-Ven 9h-18h CET</p>
+            <a href="https://wa.me/33642535759" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:12px">+33 6 42 53 57 59</a>
+          </div>
+        </div>
+        <div style="margin-top:32px;background:var(--dark-bg-card);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:28px;max-width:700px">
+          <h3 style="color:var(--white);margin-bottom:20px;font-size:16px">FAQ rapide</h3>
+          <div class="faq-item">
+            <div class="faq-question">Comment générer mes premiers leads ? <span class="toggle">+</span></div>
+            <div class="faq-answer"><p>Allez dans "Générer des leads", sélectionnez votre pays et secteur, choisissez le nombre de leads et cliquez sur "Générer". Le fichier CSV/JSON est disponible immédiatement.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Comment générer des emails personnalisés ? <span class="toggle">+</span></div>
+            <div class="faq-answer"><p>Allez dans "Générer des emails", collez vos leads au format JSON, choisissez le secteur et cliquez sur "Générer". Les emails intègrent automatiquement les actualités récentes du secteur.</p></div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Comment résilier mon abonnement ? <span class="toggle">+</span></div>
+            <div class="faq-answer"><p>Allez dans "Mon abonnement" et cliquez sur "Résilier". La résiliation prend effet en fin de mois. Vous pouvez aussi contacter le support.</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- fin dash-content -->
+  </main>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/license-verification.js"></script>
+<script>
+const SUPABASE_URL = 'https://ilycnutphhmuvaonkrsa.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlseWNudXRwaGhtdXZhb25rcnNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1MjY5NDcsImV4cCI6MjA5MDEwMjk0N30.80ipBwMVvAkC2f0Oz2Wzl8E6GjMwlLCoE72XbePtmnM';
+const API_URL = 'https://iananoleads-backend.onrender.com';
+
+let currentClient = null;
+let currentLicense = null;
+let fingerprint = null;
+
+// --- Navigation panels ---
+function showPanel(name) {
+  document.querySelectorAll('.dash-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.dash-nav a').forEach(a => a.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  document.querySelector('[data-panel="' + name + '"]').classList.add('active');
+  const titles = {
+    accueil:'Tableau de bord', generer:'Générer des leads',
+    emails:'Générer des emails', historique:'Historique',
+    abonnement:'Mon abonnement', profil:'Mon profil', support:'Support'
+  };
+  document.getElementById('topbar-title').textContent = titles[name] || '';
+  // Fermer sidebar mobile
+  document.getElementById('dash-sidebar').classList.remove('open');
+}
+
+document.querySelectorAll('.dash-nav a[data-panel]').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    showPanel(this.dataset.panel);
+  });
+});
+
+// Mobile menu
+document.getElementById('mobile-menu-btn')?.addEventListener('click', function() {
+  document.getElementById('dash-sidebar').classList.toggle('open');
+});
+
+// --- Initialisation ---
+async function init() {
+  // Vérifier session
+  const sessionData = localStorage.getItem('w2k_session');
+  if (!sessionData) {
+    window.location.href = 'login.html';
+    return;
+  }
+
+  try {
+    currentClient = JSON.parse(sessionData);
+  } catch(e) {
+    window.location.href = 'login.html';
+    return;
+  }
+
+  // Afficher les infos utilisateur
+  const initials = ((currentClient.prenom || '?')[0] + (currentClient.nom || '?')[0]).toUpperCase();
+  document.getElementById('user-avatar').textContent = initials;
+  document.getElementById('user-name').textContent = currentClient.prenom + ' ' + currentClient.nom;
+  document.getElementById('welcome-name').textContent = currentClient.prenom;
+
+  // Fingerprint
+  if (window.W2K_License) {
+    fingerprint = await window.W2K_License.getFingerprint();
+  }
+
+  // Vérifier licence
+  await checkLicenseStatus();
+
+  // Charger profil
+  loadProfil();
+
+  // Charger historique
+  await loadHistorique();
+}
+
+async function checkLicenseStatus() {
+  if (!fingerprint) return;
+  try {
+    const resp = await fetch(API_URL + '/api/auth/verify-license', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fingerprint })
+    });
+    const data = await resp.json();
+    currentLicense = data.license;
+
+    if (data.valid && data.license) {
+      // Actif
+      document.getElementById('stat-status').textContent = '✅';
+      document.getElementById('stat-expiry').textContent = 'Actif';
+      document.getElementById('sub-badge').textContent = 'Actif';
+      document.getElementById('sub-badge').className = 'badge badge-active';
+      document.getElementById('sub-status-text').textContent = 'Actif';
+      document.getElementById('sub-inactive-msg').style.display = 'none';
+      document.getElementById('sub-active-msg').style.display = 'block';
+      if (data.license.expires_at) {
+        const d = new Date(data.license.expires_at).toLocaleDateString('fr-FR');
+        document.getElementById('sub-expiry').textContent = d;
+        document.getElementById('stat-expiry').textContent = 'Expire le ' + d;
+      }
+    } else {
+      document.getElementById('stat-status').textContent = '⚠️';
+      document.getElementById('stat-expiry').textContent = 'Inactif';
+      document.getElementById('licence-banner').style.display = 'block';
+    }
+
+    const fpShort = fingerprint.slice(0, 8) + '...' + fingerprint.slice(-8);
+    document.getElementById('sub-fp').textContent = fpShort;
+
+  } catch(e) {}
+}
+
+function loadProfil() {
+  const c = currentClient;
+  const fields = [
+    ['Prénom', c.prenom], ['Nom', c.nom],
+    ['Email', c.email], ['Téléphone', c.telephone],
+    ['Entreprise', c.raison_sociale],
+    ['Adresse', [c.adresse, c.code_postal, c.ville].filter(Boolean).join(', ')],
+    ['Pays', c.pays], ['Membre depuis', new Date(c.created_at || Date.now()).toLocaleDateString('fr-FR')]
+  ];
+  document.getElementById('profil-infos').innerHTML = fields
+    .filter(f => f[1])
+    .map(f => `<div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:14px">
+      <span style="color:var(--gray-medium)">${f[0]}</span>
+      <span style="color:var(--white)">${f[1]}</span>
+    </div>`).join('');
+}
+
+async function loadHistorique() {
+  if (!fingerprint) return;
+  try {
+    const resp = await fetch(API_URL + '/api/leads/history', {
+      headers: { 'X-Fingerprint': fingerprint }
+    });
+    if (!resp.ok) return;
+    const data = await resp.json();
+    const tbody = document.getElementById('history-body');
+
+    if (!data.history || data.history.length === 0) return;
+
+    const PAYS = { FR:'France',BE:'Belgique',CH:'Suisse',SN:'Sénégal',CI:"Côte d'Ivoire",CM:'Cameroun' };
+    tbody.innerHTML = data.history.map(h => `
+      <tr>
+        <td>${new Date(h.created_at).toLocaleDateString('fr-FR')}</td>
+        <td>${PAYS[h.pays] || h.pays}</td>
+        <td>${h.secteur}</td>
+        <td style="color:var(--primary-gold);font-weight:600">${h.count}</td>
+        <td><span class="badge badge-active">${h.status}</span></td>
+        <td>${h.download_url ? `<a href="${h.download_url}" target="_blank" class="btn btn-secondary" style="padding:6px 14px;font-size:12px">⬇️</a>` : '—'}</td>
+      </tr>`).join('');
+
+    // Mettre à jour stats
+    const totalLeads = data.history.reduce((s, h) => s + (h.count || 0), 0);
+    document.getElementById('stat-leads').textContent = totalLeads.toLocaleString('fr-FR');
+    document.getElementById('stat-downloads').textContent = data.history.length;
+  } catch(e) {}
+}
+
+// --- Génération leads ---
+document.getElementById('gen-btn').addEventListener('click', async function() {
+  if (!fingerprint) { alert('Licence non vérifiée'); return; }
+  const btn = this;
+  btn.innerHTML = '<span class="spinner"></span> Génération en cours...';
+  btn.disabled = true;
+  document.getElementById('gen-error').style.display = 'none';
+  document.getElementById('gen-result').classList.remove('show');
+
+  try {
+    const resp = await fetch(API_URL + '/api/leads/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Fingerprint': fingerprint
+      },
+      body: JSON.stringify({
+        pays: document.getElementById('gen-pays').value,
+        secteur: document.getElementById('gen-secteur').value,
+        count: document.getElementById('gen-count').value,
+        format: document.getElementById('gen-format').value,
+        keywords: document.getElementById('gen-keywords').value,
+        fingerprint
+      })
+    });
+
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.error || 'Erreur génération');
+
+    document.getElementById('gen-result-title').textContent = data.count + ' leads générés !';
+    document.getElementById('gen-result-sub').textContent = data.pays + ' · ' + data.secteur;
+
+    // Preview 3 leads
+    if (data.leads && data.leads.length) {
+      document.getElementById('gen-preview').innerHTML =
+        data.leads.slice(0,3).map(l =>
+          `${l.prenom} ${l.nom} — ${l.entreprise} — ${l.email}`
+        ).join('<br>') + '<br><span style="color:var(--gray-dark)">...et ' + (data.count - 3) + ' autres</span>';
+    }
+
+    if (data.download_url) {
+      document.getElementById('gen-download-btn').href = data.download_url;
+      document.getElementById('gen-download-btn').style.display = 'inline-flex';
+    } else {
+      document.getElementById('gen-download-btn').style.display = 'none';
+    }
+
+    document.getElementById('gen-result').classList.add('show');
+
+    // Mettre à jour stats
+    const current = parseInt(document.getElementById('stat-leads').textContent.replace(/\s/g,'')) || 0;
+    document.getElementById('stat-leads').textContent = (current + data.count).toLocaleString('fr-FR');
+    const dl = parseInt(document.getElementById('stat-downloads').textContent) || 0;
+    document.getElementById('stat-downloads').textContent = dl + 1;
+
+  } catch(err) {
+    document.getElementById('gen-error').textContent = err.message;
+    document.getElementById('gen-error').style.display = 'block';
+  }
+
+  btn.innerHTML = '⚡ Générer mes leads';
+  btn.disabled = false;
+});
+
+// --- Génération emails ---
+document.getElementById('email-btn').addEventListener('click', async function() {
+  if (!fingerprint) { alert('Licence non vérifiée'); return; }
+  const btn = this;
+  let leads;
+  try {
+    leads = JSON.parse(document.getElementById('email-leads').value || '[]');
+  } catch(e) {
+    document.getElementById('email-error').textContent = 'Format JSON invalide';
+    document.getElementById('email-error').style.display = 'block';
+    return;
+  }
+  if (!leads.length) {
+    document.getElementById('email-error').textContent = 'Ajoutez au moins un lead';
+    document.getElementById('email-error').style.display = 'block';
+    return;
+  }
+
+  btn.innerHTML = '<span class="spinner"></span> Génération...';
+  btn.disabled = true;
+  document.getElementById('email-error').style.display = 'none';
+
+  try {
+    const resp = await fetch(API_URL + '/api/emails/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Fingerprint': fingerprint
+      },
+      body: JSON.stringify({
+        leads,
+        secteur: document.getElementById('email-secteur').value,
+        pays: document.getElementById('email-pays').value,
+        expediteur: document.getElementById('email-expediteur').value,
+        fingerprint
+      })
+    });
+
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.error);
+
+    document.getElementById('email-result-title').textContent = data.count + ' emails générés !';
+    document.getElementById('email-preview').innerHTML = data.emails.slice(0, 3).map(e => `
+      <div style="background:var(--dark-bg);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px">
+        <div style="font-size:12px;color:var(--primary-gold);margin-bottom:6px">Objet : ${e.subject}</div>
+        <pre style="font-size:11px;color:var(--gray-medium);white-space:pre-wrap;margin:0;font-family:var(--font-body)">${e.body.slice(0,200)}...</pre>
+      </div>`).join('');
+    document.getElementById('email-result').classList.add('show');
+
+    const cur = parseInt(document.getElementById('stat-emails').textContent) || 0;
+    document.getElementById('stat-emails').textContent = cur + data.count;
+
+  } catch(err) {
+    document.getElementById('email-error').textContent = err.message;
+    document.getElementById('email-error').style.display = 'block';
+  }
+
+  btn.innerHTML = '✉️ Générer les emails';
+  btn.disabled = false;
+});
+
+// --- Résiliation ---
+document.getElementById('cancel-btn')?.addEventListener('click', function() {
+  if (confirm('Confirmer la résiliation ? Votre accès reste actif jusqu\'en fin de mois.')) {
+    window.location.href = 'mailto:support@iananoleads.com?subject=Résiliation abonnement iaNanoLeads';
+  }
+});
+
+// --- Déconnexion ---
+document.getElementById('logout-btn').addEventListener('click', function(e) {
+  e.preventDefault();
+  localStorage.removeItem('w2k_session');
+  window.location.href = 'login.html';
+});
+
+// Lancer
+init();
+</script>
+</body>
+</html>
