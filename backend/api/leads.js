@@ -75,7 +75,7 @@ router.post('/generate', checkLicense, async (req, res) => {
       status: 'completed'
     };
 
-    await insert('lead_batches', batchRecord).catch(() => {});
+    await insert('nanoleads_lead_batches', batchRecord).catch(() => {});
 
     // Génération fichier
     let fileContent, fileName, contentType;
@@ -120,7 +120,7 @@ router.post('/generate', checkLicense, async (req, res) => {
  */
 router.get('/history', checkLicense, async (req, res) => {
   try {
-    const history = await select('lead_batches', { license_id: req.license?.id });
+    const history = await select('nanoleads_lead_batches', { license_id: req.license?.id });
     res.json({ history: history || [] });
   } catch (err) {
     res.status(500).json({ error: 'Erreur récupération historique' });
