@@ -44,7 +44,7 @@
       </form>
 
       <p style="text-align:center;margin-top:20px;font-size:13px;color:var(--gray-medium)">
-        Pas encore de compte ? <a href="inscription.html" style="color:var(--primary-gold)">S'inscrire</a>
+        Pas encore de compte ? <a href="http://inscription.iananoleads.com/" style="color:var(--primary-gold)">S'inscrire</a>
       </p>
     </div>
 
@@ -89,7 +89,7 @@ document.getElementById('login-form').addEventListener('submit', async function(
     const data = await resp.json();
 
     if (!data || data.length === 0) {
-      throw new Error('Email introuvable. <a href="inscription.html" style="color:var(--primary-gold)">Créer un compte →</a>');
+      throw new Error('Email introuvable. <a href="http://inscription.iananoleads.com/" style="color:var(--primary-gold)">Créer un compte →</a>');
     }
 
     const client = data[0];
